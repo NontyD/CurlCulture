@@ -10,7 +10,7 @@ def book_service(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.save()
-            return redirect('booking_confirmation')
+            return redirect('booking_confirmation')  # Updated to match the correct URL name
     else:
         form = BookingForm()
     return render(request, 'bookings/book_service.html', {'form': form})
