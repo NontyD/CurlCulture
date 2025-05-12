@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CurlCulture</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">CurlCulture</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Braiding</a></li>
+                        <li><a href="#">Wigs</a></li>
+                        <li><a href="#">Treatments</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Shop</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Hair Products</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Reviews</a></li>
+                <li><a class="btn" href="#">BOOK NOW</a></li>
+                <li><a href="#">Login/Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <img src="https://via.placeholder.com/400x300" alt="Hero Image">
+        </div>
+        <div class="hero-right">
+            <h1>Welcome to CurlCulture</h1>
+            <p>Our Services:</p>
+            <ul>
+                <li>Braiding</li>
+                <li>Wigs</li>
+                <li>Treatments</li>
+            </ul>
+            <a class="btn" href="#">BOOK NOW</a>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop">
+        <h2>Shop Our Products</h2>
+        <ul>
+            <li>Hair Products</li>
+            <li>Accessories</li>
+        </ul>
+        <a class="btn" href="#">VISIT THE SHOP</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-left">
+            <p>Contact Us:</p>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Email"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Instagram"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="TikTok"></a>
+        </div>
+        <div class="footer-center">
+            <p>Subscribe to our newsletter</p>
+            <input type="email" placeholder="Your email">
+            <button>Subscribe</button>
+        </div>
+        <div class="footer-right">
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CurlCulture™</p>
+        </div>
+    </footer>
+</body>
+</html>
