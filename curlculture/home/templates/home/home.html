@@ -11,12 +11,35 @@
     <div class="hero-right">
         <h1>Welcome to CurlCulture</h1>
         <p>Our Services:</p>
+        {% for category in categories %}
+    <h2>Our Services:</h2>
+{% for service in services %}
+    <div style="margin-bottom: 20px;">
+        <h3>{{ service.name }}</h3>
+        <p><strong>Category:</strong> {{ service.category.name }}</p>
+        <p>{{ service.description }}</p>
+        <p><strong>Price:</strong> €{{ service.price }}</p>
+        <a class="btn" href="{% url 'booking_form' %}?service_id={{ service.id }}">
+            Book {{ service.name }}
+        </a>
+    </div>
+{% endfor %}
+
+
         <ul>
-            <li>Braiding</li>
-            <li>Wigs</li>
-            <li>Treatments</li>
+        {% for service in category.salonservice_set.all %}
+            <li>
+                {{ service.name }} – €{{ service.price }}<br>
+                <a class="btn" href="{% url 'booking_form' %}?service_id={{ service.id }}">
+                    Book {{ service.name }}
+                </a>
+            </li>
+        {% endfor %}
         </ul>
-        <a class="btn" href="#">BOOK NOW</a>
+    </div>
+{% endfor %}
+
+        <a class="btn" href="{% url 'services' %}">BOOK NOW</a>
     </div>
 </section>
 

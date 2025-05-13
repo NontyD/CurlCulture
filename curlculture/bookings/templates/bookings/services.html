@@ -1,0 +1,22 @@
+{% for category in categories %}
+  <div class="service-category">
+    <h2>{{ category.name }}</h2>
+    <p> <!-- Add a quirky description here manually or via category model --> 
+      {% if category.name == "Protective Styles" %}
+        Keep your hair safe and slay effortlessly 💁🏾‍♀️ — choose your favorite!
+      {% endif %}
+    </p>
+
+    <form method="get" action="{% url 'booking_form' %}">
+      <label for="service">Choose a service:</label>
+      <select name="service_id">
+        {% for service in category.salonservice_set.all %}
+          <option value="{{ service.id }}">
+            {{ service.name }} – €{{ service.price }}
+          </option>
+        {% endfor %}
+      </select>
+      <button type="submit">Book This</button>
+    </form>
+  </div>
+{% endfor %}
