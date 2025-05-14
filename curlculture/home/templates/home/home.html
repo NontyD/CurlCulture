@@ -3,55 +3,74 @@
 {% block title %}Home - CurlCulture{% endblock %}
 
 {% block content %}
+
 <!-- Hero Section -->
-<section class="hero">
-    <div class="hero-left">
-        <img src="https://via.placeholder.com/400x300" alt="Hero Image">
+<section class="hero" style="display: flex; flex-wrap: wrap; align-items: center; padding: 40px 20px; gap: 30px;">
+    <div class="hero-left" style="flex: 1; min-width: 300px;">
+        <img src="https://via.placeholder.com/400x300" alt="Hero Image" style="width: 100%; border-radius: 8px;">
     </div>
-    <div class="hero-right">
+    <div class="hero-right" style="flex: 2; min-width: 300px;">
         <h1>Welcome to CurlCulture</h1>
-        <p>Our Services:</p>
-        {% for category in categories %}
-    <h2>Our Services:</h2>
-{% for service in services %}
-    <div style="margin-bottom: 20px;">
-        <h3>{{ service.name }}</h3>
-        <p><strong>Category:</strong> {{ service.category.name }}</p>
-        <p>{{ service.description }}</p>
-        <p><strong>Price:</strong> €{{ service.price }}</p>
-        <a class="btn" href="{% url 'booking_form' %}?service_id={{ service.id }}">
-            Book {{ service.name }}
-        </a>
+        <p>Discover our range of hair care and styling services tailored for you.</p>
+        <a class="btn" href="{% url 'services' %}">VIEW ALL SERVICES</a>
     </div>
-{% endfor %}
+</section>
 
+<!-- Services Categories Section -->
+<section class="categories" style="padding: 40px 20px;">
+    <h2 style="text-align: center; margin-bottom: 40px;">Our Services</h2>
 
-        <ul>
-        {% for service in category.salonservice_set.all %}
-            <li>
-                {{ service.name }} – €{{ service.price }}<br>
-                <a class="btn" href="{% url 'booking_form' %}?service_id={{ service.id }}">
-                    Book {{ service.name }}
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+    <!-- Category 1: Treatments -->
+    <div style="display: flex; align-items: center; margin-bottom: 40px; gap: 20px; flex-wrap: wrap;">
+        <img src="https://via.placeholder.com/300x200" alt="Treatments" style="flex: 1; max-width: 300px; border-radius: 8px;">
+        <div style="flex: 2; min-width: 250px;">
+            <h1>Treatments</h1>
+            <p>Our nourishing hair treatments help restore and maintain healthy, moisturized curls with salon-grade care.</p>
+            <a class="btn" href="{% url 'services' 'treatments' %}">BOOK NOW</a>
+        </div>
     </div>
-{% endfor %}
 
-        <a class="btn" href="{% url 'services' %}">BOOK NOW</a>
+    <!-- Category 2: Braidings -->
+    <div style="display: flex; align-items: center; margin-bottom: 40px; gap: 20px; flex-wrap: wrap;">
+        <img src="https://via.placeholder.com/300x200" alt="Braidings" style="flex: 1; max-width: 300px; border-radius: 8px;">
+        <div style="flex: 2; min-width: 250px;">
+            <h1>Braidings</h1>
+            <p>We specialize in protective styles like box braids, cornrows, and twists to protect and enhance natural hair.</p>
+            <a class="btn" href="{% url 'services' 'braidings' %}">BOOK NOW</a>
+        </div>
+    </div>
+
+    <!-- Category 3: Wigs Installation -->
+    <div style="display: flex; align-items: center; margin-bottom: 40px; gap: 20px; flex-wrap: wrap;">
+        <img src="https://via.placeholder.com/300x200" alt="Wigs" style="flex: 1; max-width: 300px; border-radius: 8px;">
+        <div style="flex: 2; min-width: 250px;">
+            <h1>Wigs Installation</h1>
+            <p>Explore our custom wig installations and styling services designed to give you versatility and confidence.</p>
+            <a class="btn" href="{% url 'services' 'wigs' %}">BOOK NOW</a>
+        </div>
+    </div>
+
+    <!-- Category 4: Curly Haircuts -->
+    <div style="display: flex; align-items: center; margin-bottom: 40px; gap: 20px; flex-wrap: wrap;">
+        <img src="https://via.placeholder.com/300x200" alt="Haircuts" style="flex: 1; max-width: 300px; border-radius: 8px;">
+        <div style="flex: 2; min-width: 250px;">
+            <h1>Curly Haircuts</h1>
+            <p>From trendy curls to precision trims, we offer haircuts tailored to suit your natural texture and personal style.</p>
+            <a class="btn" href="{% url 'services' 'haircuts' %}">BOOK NOW</a>
+        </div>
     </div>
 </section>
 
 <!-- Shop Section -->
-<section class="shop">
-    <h2>Shop Our Products</h2>
-    <ul>
+<section class="shop" style="padding: 40px 20px; background-color: #f9f9f9;">
+    <h2 style="text-align: center;">Shop Our Products</h2>
+    <ul style="text-align: center; list-style: none; padding: 0; margin: 20px 0;">
         <li>Hair Products</li>
         <li>Accessories</li>
     </ul>
-    <a class="btn" href="#">VISIT THE SHOP</a>
+    <div style="text-align: center;">
+        <a class="btn" href="#">VISIT THE SHOP</a>
+    </div>
 </section>
-
 
 {% endblock %}
