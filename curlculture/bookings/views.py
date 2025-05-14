@@ -1,13 +1,19 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BookingForm
 from django.contrib.auth.decorators import login_required
 from .models import ServiceCategory, SalonService
 
 
+def services_view(request, category):
+    # Fetch services for the selected category
+    services = SalonService.objects.filter(category__name__iexact=category)
+    return render(request, 'bookings/services.html', {'services': services, 'category': category})
+
 @login_required
-def book_service(request):
-    service_id = request.GET.get('service_id')
-    form = BookingForm(initial={'service': service_id}) if service_id else BookingForm()
+def book_service(request, service_id=None):
+    # Handle booking for a specific service
+    service = get_object_or_404(SalonService, id=service_id) if service_id else None
+    form = BookingForm(initial={'service': service}) if service else BookingForm()
 
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -17,16 +23,12 @@ def book_service(request):
             booking.save()
             return redirect('booking_confirmation')
 
-    return render(request, 'bookings/book_service.html', {'form': form})
+    return render(request, 'bookings/book_service.html', {'form': form, 'service': service})
 
 
 def booking_confirmation(request):
     return render(request, 'bookings/booking_confirmation.html')
 
-
-def services_view(request):
-    categories = ServiceCategory.objects.prefetch_related('salonservice_set').all()
-    return render(request, 'bookings/services.html', {'categories': categories})
 
 
 def home(request):
