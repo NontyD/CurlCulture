@@ -34,3 +34,11 @@ def booking_confirmation(request):
 def home(request):
     services = SalonService.objects.select_related('category').all()
     return render(request, 'home.html', {'services': services})
+
+
+def search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = SalonService.objects.filter(name__icontains=query)
+    return render(request, 'bookings/search_results.html', {'results': results, 'query': query})
