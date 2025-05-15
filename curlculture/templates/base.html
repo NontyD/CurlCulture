@@ -13,13 +13,20 @@
             <div class="logo">
                 <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="CurlCulture Logo"></a>
             <ul class="nav-links">
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'bookings_home' %}">Bookings</a></li>
-    <li><a href="{% url 'login' %}">Login</a></li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-    {% if user.is_staff or user.is_superuser %}
-        <li><a href="/admin/">Admin</a></li>
-    {% endif %}
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'bookings_home' %}">Bookings</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% if user.is_staff or user.is_superuser %}
+                <li><a href="/admin/">Admin</a></li>
+                {% endif %}
+                <li>
+            <a href="{% url 'profile' %}">Profile</a>
+            <form action="{% url 'search' %}" method="get" style="display:inline;">
+            <input type="text" name="q" placeholder="Search services..." required>
+            <button type="submit">Search</button>
+        </form>
+    </li>
 </ul>
         </nav>
     </header>
