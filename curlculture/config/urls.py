@@ -18,14 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from home import views as home_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('bookings/', include('bookings.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # For built-in auth views
-    path('accounts/', include('accounts.urls')),  # For your custom accounts app
-]
+    path('accounts/', include('accounts.urls')), 
+    path('subscribe/', home_views.subscribe, name='subscribe'),
+    ]
 
 # Serve static files during development
 if settings.DEBUG:
