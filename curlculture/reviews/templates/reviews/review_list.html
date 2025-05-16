@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<h2>Customer Reviews</h2>
+<a class="btn" href="{% url 'add_review' %}">Add a Review</a>
+<hr>
+{% for review in reviews %}
+    <div class="review" style="margin-bottom:2rem; padding:1rem; background:#f8f9fa; border-radius:8px;">
+        <strong>{{ review.user.username }}</strong> 
+        <span style="color:#f72585;">&#9733; {{ review.rating }}/5</span>
+        <br>
+        <em>{{ review.service }}</em>
+        <p>{{ review.comment }}</p>
+        <small>Posted on {{ review.created_at|date:"M d, Y H:i" }}</small>
+    </div>
+{% empty %}
+    <p>No reviews yet. Be the first to <a href="{% url 'add_review' %}">add one</a>!</p>
+{% endfor %}
+{% endblock %}

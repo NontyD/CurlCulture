@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # For built-in auth views
     path('accounts/', include('accounts.urls')), 
     path('subscribe/', home_views.subscribe, name='subscribe'),
+    path('reviews/', include('reviews.urls')),
     ]
 
 # Serve static files during development
