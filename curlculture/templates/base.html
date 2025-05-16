@@ -16,6 +16,7 @@
                 <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'bookings_home' %}">Bookings</a></li>
+                <li><a href="{% url 'review_list' %}">Reviews</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% if user.is_staff or user.is_superuser %}
