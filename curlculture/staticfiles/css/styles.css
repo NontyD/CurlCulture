@@ -1,4 +1,3 @@
-/* Root color palette */
 :root {
     --primary: #3a0ca3;
     --secondary: #f72585;
@@ -8,8 +7,8 @@
     --text: #22223b;
     --footer-bg: #22223b;
     --footer-text: #fff;
-    --nav-bg: #fff;
-    --nav-link: #3a0ca3;
+    --nav-bg: #22223b;
+    --nav-link: #fff;
     --nav-link-hover: #f72585;
     --btn-bg: #f72585;
     --btn-text: #fff;
@@ -17,7 +16,6 @@
     --shadow: 0 2px 8px rgba(58,12,163,0.08);
 }
 
-/* Reset and base styles */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -44,29 +42,31 @@ header {
     margin: 0 auto;
     padding: 0.5rem 2rem;
 }
-.logo img {
-    height: 48px;
+
+.logo {
+    flex: 0 0 auto;
 }
+
 .nav-links {
+    flex: 1 1 auto;
     display: flex;
+    justify-content: flex-end; /* This pushes links to the right */
     align-items: center;
     gap: 1.5rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.nav-links li {
-    display: flex;
-    align-items: center;
-}
-.nav-links a {
+.nav-links a, .nav-links .btn {
     color: var(--nav-link);
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
-    transition: color 0.2s;
+    transition: color 0.2s, background 0.2s;
     padding: 0.5rem 0.75rem;
     border-radius: 4px;
+    background: none;
+    border: none;
 }
 .nav-links a:hover,
 .nav-links .btn:hover {
@@ -79,9 +79,7 @@ header {
     padding: 0.5rem 1.2rem;
     border-radius: 24px;
     font-weight: bold;
-    border: none;
     margin-left: 1rem;
-    transition: background 0.2s, color 0.2s;
 }
 .nav-links .btn:hover {
     background: var(--btn-hover-bg);
@@ -111,12 +109,16 @@ header {
     z-index: 1;
 }
 .hero-right {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
     color: #fff;
-    text-align: left;
-    max-width: 600px;
-    margin-left: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 1rem;
 }
 .hero-right h1 {
     font-size: 2.8rem;
@@ -245,28 +247,49 @@ header {
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);
-    padding: 2rem 0 1rem 0;
+    padding: 1rem 0 0.5rem 0;
     margin-top: auto;
     width: 100%;
     box-shadow: 0 -2px 8px rgba(34,34,59,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 1rem;
 }
-.footer-left, .footer-center, .footer-right {
-    margin-bottom: 1rem;
-    text-align: center;
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.footer-left p {
+    margin: 0 0.5rem 0 0;
+    font-weight: 500;
 }
 .footer-left img {
-    margin: 0 0.5rem;
+    margin: 0 0.25rem;
     vertical-align: middle;
     filter: brightness(0) invert(1);
 }
+.footer-center {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.footer-center p {
+    margin: 0 0.5rem 0 0;
+    font-weight: 500;
+}
 .footer-center input[type="email"] {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;
     border-radius: 20px;
     border: none;
-    margin-right: 0.5rem;
     font-size: 1rem;
 }
 .footer-center button {
@@ -274,7 +297,7 @@ footer {
     color: #fff;
     border: none;
     border-radius: 20px;
-    padding: 0.5rem 1.5rem;
+    padding: 0.4rem 1.2rem;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
@@ -284,15 +307,34 @@ footer {
     background: var(--accent);
 }
 .footer-bottom {
-    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0.5rem auto 0 auto;
+    width: 100%;
+    padding: 0 2rem;
     font-size: 0.95rem;
     color: #bdbdbd;
 }
+.footer-bottom a {
+    color: #bdbdbd;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+.footer-bottom a:hover {
+    color: var(--secondary);
+}
+
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
         align-items: flex-start;
         padding: 1rem;
+    }
+    .nav-links {
+        width: 100%;
+        justify-content: flex-end;
     }
     .categories > div, .shop ul {
         flex-direction: column;
@@ -301,5 +343,14 @@ footer {
     .hero-right {
         margin-left: 0;
         text-align: center;
+    }
+    .footer-main, .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+        gap: 0.5rem;
+    }
+    .footer-center, .footer-left {
+        justify-content: center;
     }
 }
