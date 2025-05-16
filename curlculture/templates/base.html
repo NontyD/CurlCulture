@@ -12,7 +12,8 @@
         <nav class="navbar">
             <div class="logo">
                 <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="CurlCulture Logo"></a>
-            <ul class="nav-links">
+            </div>
+                <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'bookings_home' %}">Bookings</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
@@ -37,31 +38,30 @@
 </body>
 <!-- Footer Content -->
 <footer>
-    <div class="footer-left">
-        <p>Contact Us:</p>
-        <a href="#"><img src="https://via.placeholder.com/24" alt="Email"></a>
-        <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
-        <a href="#"><img src="https://via.placeholder.com/24" alt="Instagram"></a>
-        <a href="#"><img src="https://via.placeholder.com/24" alt="TikTok"></a>
-    </div>
-    <div class="footer-center">
-    <p>Subscribe to our newsletter</p>
-    <form method="post" action="{% url 'subscribe' %}">
-        {% csrf_token %}
-        <input type="email" name="email" placeholder="Your email" required>
-        <button type="submit">Subscribe</button>
-    </form>
-    {% if messages %}
-        {% for message in messages %}
-            <div class="message">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-</div>
-    <div class="footer-right">
-        <a href="#">Privacy Policy</a>
+    <div class="footer-main">
+        <div class="footer-left">
+            <p>Contact Us:</p>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Email"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Facebook"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="Instagram"></a>
+            <a href="#"><img src="https://via.placeholder.com/24" alt="TikTok"></a>
+        </div>
+        <div class="footer-right">
+            <form method="post" action="{% url 'subscribe' %}">
+                {% csrf_token %}
+                <label for="newsletter" style="margin-right:0.5rem;">Subscribe to our newsletter</label>
+                <input type="email" id="newsletter" name="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 CurlCulture™</p>
+        <div class="footer-bottom-left">
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-bottom-right">
+            <span>&copy; 2025 CurlCulture™</span>
+        </div>
     </div>
 </footer>
 </html>
