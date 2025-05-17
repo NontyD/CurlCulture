@@ -52,14 +52,22 @@
 </section>
 
 <!-- Shop Section -->
-<section class="shop" style="padding: 40px 20px; background-color: #f9f9f9;">
-    <h2 style="text-align: center;">Shop Our Products</h2>
-    <ul style="text-align: center; list-style: none; padding: 0; margin: 20px 0;">
-        <li>Hair Products</li>
-        <li>Accessories</li>
-    </ul>
-    <div style="text-align: center;">
-        <a class="btn" href="#">VISIT THE SHOP</a>
+<section class="shop-hero" style="position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center; margin: 40px 0;">
+    <img src="https://res.cloudinary.com/dzibrzlq9/image/upload/v1747521173/products_udokr6.webp"
+         alt="Shop Products"
+         style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); border-radius: 12px;">
+    <div class="shop-hero-content" style="position: relative; z-index: 2; color: #fff; text-align: center; max-width: 700px; margin: 0 auto;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 1px;">Our Products</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+            Discover our curated selection of hair care products and accessories, handpicked for every curl type and style. 
+            Shop with ease—just add your favorites to the cart and check out in a few simple steps.
+        </p>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #ffe066; font-weight: 500;">
+            Enjoy <strong>FREE shipping</strong> on all orders over $30!
+        </p>
+        <a class="btn" href="{% url 'product_list' %}" style="background: #f72585; color: #fff; font-size: 1.1rem; padding: 0.7rem 2rem; border-radius: 24px; font-weight: bold; border: none; box-shadow: 0 2px 8px rgba(58,12,163,0.08);">
+            SHOP NOW
+        </a>
     </div>
 </section>
 
