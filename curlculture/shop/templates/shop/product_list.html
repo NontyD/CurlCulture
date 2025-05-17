@@ -29,6 +29,10 @@
             {% if not product.in_stock %}
                 <div style="color:#f72585; font-weight:bold;">Out of Stock</div>
             {% endif %}
+            <form action="{% url 'add_to_cart' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add to Cart</button>
+            </form>        
         </div>
     {% empty %}
         <p>No products found.</p>
