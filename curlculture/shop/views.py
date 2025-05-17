@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
+import stripe
+from django.conf import settings
 
 def product_list(request):
     products = Product.objects.all()
@@ -73,3 +75,53 @@ def cart_added(request):
     if product_id:
         product = get_object_or_404(Product, id=product_id)
     return render(request, 'shop/cart_added.html', {'product': product})
+
+# Add Stripe configuration
+def checkout(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('cart_view')
+
+    products = Product.objects.filter(id__in=cart.keys())
+    line_items = []
+    total = 0
+    for product in products:
+        quantity = cart[str(product.id)]
+        subtotal = product.price * quantity
+        total += subtotal
+        line_items.append({
+            'price_data': {
+                'currency': 'usd',
+                'product_data': {
+                    'name': product.name,
+                },
+                'unit_amount': int(product.price * 100),  # Stripe expects cents
+            },
+            'quantity': quantity,
+        })
+
+    shipping = 0 if total > 30 else 500  # in cents
+    if shipping > 0:
+        line_items.append({
+            'price_data': {
+                'currency': 'usd',
+                'product_data': {'name': 'Shipping'},
+                'unit_amount': shipping,
+            },
+            'quantity': 1,
+        })
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=line_items,
+        mode='payment',
+        success_url=request.build_absolute_uri('/shop/checkout/success/'),
+        cancel_url=request.build_absolute_uri('/shop/cart/'),
+    )
+    return redirect(session.url, code=303)
+
+def checkout_success(request):
+    # Optionally clear the cart
+    request.session['cart'] = {}
+    return render(request, 'shop/checkout_success.html')
