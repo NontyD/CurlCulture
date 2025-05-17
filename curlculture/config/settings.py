@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'home',
     'bookings',
     'accounts',
-    'reviews',  # New app for reviews
+    'reviews',
+    'shop'
 ]
 
 MIDDLEWARE = [
