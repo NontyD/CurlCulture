@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Added to Cart{% endblock %}
+{% block content %}
+<div style="text-align:center; margin-top:2rem;">
+    {% if product %}
+        <h3>{{ product.name }} added to your cart!</h3>
+    {% endif %}
+    <a href="{% url 'product_list' %}" class="btn" style="margin-right:1em;">Continue Shopping</a>
+    <a href="{% url 'cart_view' %}" class="btn">Go to Cart / Checkout</a>
+</div>
+{% endblock %}
