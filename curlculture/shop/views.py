@@ -45,9 +45,11 @@ def cart_view(request):
 
 def add_to_cart(request, product_id):
     cart = request.session.get('cart', {})
-    cart[str(product_id)] = cart.get(str(product_id), 0) + 1
+    quantity = int(request.POST.get('quantity', 1))
+    cart[str(product_id)] = cart.get(str(product_id), 0) + quantity
     request.session['cart'] = cart
-    return redirect('cart_view')
+    request.session['just_added'] = product_id  # For feedback modal
+    return redirect('cart_added')
 
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
@@ -64,3 +66,10 @@ def checkout(request):
     # For now, just clear the cart and show a confirmation
     request.session['cart'] = {}
     return render(request, 'shop/checkout_success.html')
+
+def cart_added(request):
+    product_id = request.session.pop('just_added', None)
+    product = None
+    if product_id:
+        product = get_object_or_404(Product, id=product_id)
+    return render(request, 'shop/cart_added.html', {'product': product})
