@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Shea Butter",
+    "description": "Rich in natural shea butter, this cream deeply moisturizes and nourishes dry hair.",
+    "price": 8.99,
+    "category": "Kantu",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445822/shea_butter_q0kiu5.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Twist & Lock Gel",
+    "description": "Perfect for styling twists and locks while keeping hair moisturized.",
+    "price": 7.49,
+    "category": "Kantu",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445824/twist_lock_gel_da1psm.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Relaxer Kit",
+    "description": "A complete kit to relax and smooth hair while reducing breakage.",
+    "price": 9.99,
+    "category": "Dark 'n Lovely",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445818/relaxer_kit_fywm9g.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Relaxer Cream",
+    "description": "Formulated to straighten and nourish your hair with a soft finish.",
+    "price": 6.49,
+    "category": "Dark 'n Lovely",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445817/relaxer_cz058z.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Oil Moisturiser",
+    "description": "Infused with essential oils to keep your hair hydrated and shiny all day.",
+    "price": 5.99,
+    "category": "Dark 'n Lovely",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445813/oil_moisturiser_qf7zjr.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Moisturising Spray",
+    "description": "Daily moisture replenishment for naturally curly or relaxed hair.",
+    "price": 6.99,
+    "category": "Dark 'n Lovely",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445812/moisturising_spray_rmunal.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Leave-In Conditioner",
+    "description": "Detangles and softens hair while delivering long-lasting moisture.",
+    "price": 6.49,
+    "category": "Dark 'n Lovely",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445810/leave_in_conditioner_rawsmf.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Shampoo",
+    "description": "Gently cleanses hair and scalp while adding shine and softness.",
+    "price": 5.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445820/shampoo_bbmacr.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Curl Activator",
+    "description": "Defines and activates curls while reducing frizz.",
+    "price": 7.99,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445792/curl_activator_pxqdzk.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Curl Cream",
+    "description": "Nourishing cream to enhance curls and maintain definition.",
+    "price": 8.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445794/curl_cream_kkxctl.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Curl Gelatine",
+    "description": "Lightweight gel for strong hold and bounce in natural curls.",
+    "price": 7.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445796/curl_gelatine_j63xlg.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Deep Nourishing Mask",
+    "description": "Revitalizing mask to repair and strengthen dry, damaged hair.",
+    "price": 9.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445799/deep_nourishing_mask_ubac2c.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Deep Hair Treatment",
+    "description": "A powerful treatment that restores moisture and reduces breakage.",
+    "price": 9.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445799/deep_hair_treatment_flbzuf.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Creme Conditioner",
+    "description": "Softening conditioner to nourish hair and ease detangling.",
+    "price": 5.99,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445789/creme_conditioner_p2wbcx.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Conditioner",
+    "description": "Lightweight and effective for everyday conditioning of natural hair.",
+    "price": 5.49,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445788/conditioner_jro159.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Coconut Curling Cream",
+    "description": "Infused with coconut oil to define curls and reduce frizz.",
+    "price": 8.99,
+    "category": "Afri True",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445788/coconut_curling_cream_rg1fxo.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Ponytail Bands",
+    "description": "Durable elastic bands for styling and securing ponytails.",
+    "price": 2.99,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445815/ponytail_bands_zxwvwk.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Head Band",
+    "description": "Comfortable and stylish head band for everyday use.",
+    "price": 3.49,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445809/head_band_e2dgae.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Hair Clip",
+    "description": "Sturdy clip for easy sectioning or styling.",
+    "price": 1.99,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445807/hair_clip_udfrkq.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Hair Beads",
+    "description": "Colorful beads for decorative hair styling.",
+    "price": 2.49,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445805/hair_beads_zl77ua.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Hair Bands",
+    "description": "Soft and stretchable bands perfect for any hair type.",
+    "price": 2.99,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445804/hair_bands_y40fjn.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Detangling Comb",
+    "description": "Gentle on curls, perfect for detangling wet or dry hair.",
+    "price": 3.99,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445803/detangling_comb_vim7f5.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Crotched Needle",
+    "description": "Essential for crochet braiding and protective styling.",
+    "price": 2.49,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445792/crotched_needle_mzlzwx.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Afro Food",
+    "description": "Fun novelty item for Afro-themed decoration or inspiration.",
+    "price": 4.99,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445783/afro_food_fcpq8s.webp",
+    "in_stock": true
+  },
+  {
+    "name": "Afro Comb",
+    "description": "Wide-tooth comb for natural and voluminous Afro hair.",
+    "price": 3.49,
+    "category": "Accessories",
+    "image": "https://res.cloudinary.com/dzibrzlq9/image/upload/v1747445783/afro_comb_we4yll.webp",
+    "in_stock": true
+  }
+]
