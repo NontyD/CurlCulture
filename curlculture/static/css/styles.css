@@ -157,29 +157,43 @@ header {
     font-size: 2rem;
     font-weight: 700;
 }
-.categories > div {
+.category-cards {
     display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    gap: 32px;
     flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
 }
-.categories img {
-    flex: 1;
-    max-width: 320px;
+.category-card {
+    background: #fff;
     border-radius: 12px;
     box-shadow: var(--shadow);
+    flex: 1 1 320px;
+    max-width: 45%;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
-.categories h1 {
-    font-size: 1.5rem;
+.category-card img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(58,12,163,0.08);
+}
+.category-card h3 {
     color: var(--accent);
     margin-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
-.categories p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+.category-card p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
 }
-.categories .btn {
+.category-card .btn {
     background: var(--primary);
     color: #fff;
     padding: 0.5rem 1.5rem;
@@ -188,10 +202,19 @@ header {
     border: none;
     transition: background 0.2s;
 }
-.categories .btn:hover {
+.category-card .btn:hover {
     background: var(--secondary);
 }
 
+@media (max-width: 900px) {
+    .category-cards {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .category-card {
+        max-width: 100%;
+    }
+}
 /* SHOP SECTION */
 .shop {
     max-width: 1100px;
