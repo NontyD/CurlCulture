@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Shop{% endblock %}
+{% block content %}
+<h2>Shop Our Products</h2>
+<form method="get" style="margin-bottom:1rem;">
+    <select name="category">
+        <option value="">All Categories</option>
+        {% for cat in categories %}
+            <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+        {% endfor %}
+    </select>
+    <select name="sort">
+        <option value="">Sort By</option>
+        <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Price: Low to High</option>
+        <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>Price: High to Low</option>
+        <option value="name" {% if selected_sort == 'name' %}selected{% endif %}>Name</option>
+    </select>
+    <button type="submit">Apply</button>
+</form>
+<div class="shop-products" style="display:flex; flex-wrap:wrap; gap:2rem;">
+    {% for product in products %}
+        <div class="shop-card" style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #eee; padding:1rem; width:260px;">
+            {% if product.image %}
+                <img src="{{ product.image }}" alt="{{ product.name }}" style="width:100%; border-radius:8px;">
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <strong>${{ product.price }}</strong>
+            {% if not product.in_stock %}
+                <div style="color:#f72585; font-weight:bold;">Out of Stock</div>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No products found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
