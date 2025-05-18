@@ -29,6 +29,7 @@ urlpatterns = [
     path('subscribe/', home_views.subscribe, name='subscribe'),
     path('reviews/', include('reviews.urls')),
     path('shop/', include('shop.urls')),
+    path('', include('home.urls')),
     ]
 
 # Serve static files during development
