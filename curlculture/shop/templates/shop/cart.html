@@ -24,6 +24,10 @@
     </tr>
     {% endfor %}
 </table>
+<div style="margin-top:2em; text-align:center;">
+    <a href="{% url 'product_list' %}" class="btn" style="margin-right:1em;">Continue Shopping</a>
+    <a href="{% url 'checkout' %}" class="btn">Checkout with card</a>
+</div>
 <p><strong>Subtotal:</strong> ${{ total|floatformat:2 }}</p>
 <p><strong>Shipping:</strong> {% if shipping == 0 %}Free{% else %}${{ shipping|floatformat:2 }}{% endif %}</p>
 <p><strong>Total:</strong> ${{ grand_total|floatformat:2 }}</p>

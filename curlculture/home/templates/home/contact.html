@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<h2>Contact Us</h2>
+{% if messages %}
+    {% for message in messages %}
+        <div style="color: green; margin-bottom: 1em;">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form method="post" style="max-width:400px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Send</button>
+</form>
+{% endblock %}
