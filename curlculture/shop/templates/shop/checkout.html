@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<h2>Checkout</h2>
+<form method="post" style="max-width:500px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Proceed to Payment</button>
+</form>
+<hr>
+<h3>Your Order</h3>
+<ul>
+    {% for item in cart_items %}
+        <li>{{ item.product.name }} x{{ item.quantity }} — ${{ item.subtotal|floatformat:2 }}</li>
+    {% endfor %}
+</ul>
+<p><strong>Subtotal:</strong> ${{ total|floatformat:2 }}</p>
+<p><strong>Shipping:</strong> {% if shipping == 0 %}Free{% else %}${{ shipping|floatformat:2 }}{% endif %}</p>
+<p><strong>Total:</strong> ${{ grand_total|floatformat:2 }}</p>
+{% endblock %}

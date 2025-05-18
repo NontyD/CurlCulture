@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 import stripe
 from django.conf import settings
+from .forms import CheckoutForm
 
 def product_list(request):
     products = Product.objects.all()
@@ -125,3 +126,39 @@ def checkout_success(request):
     # Optionally clear the cart
     request.session['cart'] = {}
     return render(request, 'shop/checkout_success.html')
+
+
+def checkout(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('cart_view')
+
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            # Here you would process payment and save order details
+            # For now, just clear the cart and show a confirmation
+            request.session['cart'] = {}
+            return render(request, 'shop/checkout_success.html', {'customer': form.cleaned_data})
+    else:
+        form = CheckoutForm()
+
+    # Calculate totals as before
+    products = Product.objects.filter(id__in=cart.keys())
+    cart_items = []
+    total = 0
+    for product in products:
+        quantity = cart[str(product.id)]
+        subtotal = product.price * quantity
+        cart_items.append({'product': product, 'quantity': quantity, 'subtotal': subtotal})
+        total += subtotal
+    shipping = 0 if total > 30 else 5
+    grand_total = total + shipping
+
+    return render(request, 'shop/checkout.html', {
+        'form': form,
+        'cart_items': cart_items,
+        'total': total,
+        'shipping': shipping,
+        'grand_total': grand_total,
+    })
