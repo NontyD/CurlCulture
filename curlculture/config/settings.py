@@ -136,3 +136,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Central static directory
     os.path.join(BASE_DIR, 'home/static'),  # App-specific static directory
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
