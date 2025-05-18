@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user
+from django.contrib.auth import get_user_model
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
