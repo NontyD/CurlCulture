@@ -3,6 +3,10 @@ from .models import Product
 from .forms import CheckoutForm
 from django.conf import settings
 import stripe
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.core.mail import send_mail
+import json
 
 # Product list with optional filtering and sorting
 def product_list(request):
@@ -119,3 +123,33 @@ def checkout(request):
 def checkout_success(request):
     request.session['cart'] = {}
     return render(request, 'shop/checkout_success.html')
+
+# Webhook for Stripe payment confirmation
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)
+
+    # Handle the event
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        email = payment_intent['receipt_email']
+        # Send confirmation email
+        send_mail(
+            'Your CurlCulture Order Confirmation',
+            'Thank you for your order! Your payment was successful.',
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            fail_silently=False,
+        )
+    return HttpResponse(status=200)
