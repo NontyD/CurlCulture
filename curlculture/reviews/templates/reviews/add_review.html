@@ -4,7 +4,16 @@
 
 {% block content %}
 <h2>Customer Reviews</h2>
-<a class="btn" href="{% url 'add_review' %}">Add a Review</a>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if form.errors %}
+        <div class="form-errors" style="color: #f72585;">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <button type="submit" class="btn">Submit Review</button>
+</form>
 <hr>
 {% for review in reviews %}
     <div class="review" style="margin-bottom:2rem; padding:1rem; background:#f8f9fa; border-radius:8px;">
@@ -16,6 +25,6 @@
         <small>Posted on {{ review.created_at|date:"M d, Y H:i" }}</small>
     </div>
 {% empty %}
-    <p>No reviews yet. Be the first to <a href="{% url 'add_review' %}">add one</a>!</p>
+    <p>No reviews yet. Be the first to add one!</p>
 {% endfor %}
 {% endblock %}
