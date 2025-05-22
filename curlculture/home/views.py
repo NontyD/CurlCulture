@@ -23,3 +23,6 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'home/contact.html', {'form': form})
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
