@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Server Error{% endblock %}
+{% block content %}
+<div style="text-align:center; padding:3rem;">
+    <h1 style="font-size:3rem; color:#f72585;">500</h1>
+    <h2>Something went wrong!</h2>
+    <p>We're working to fix it. Please try again later.</p>
+    <a href="{% url 'product_list' %}" class="btn" style="margin-top:2rem;">Back to Shop</a>
+</div>
+{% endblock %}
