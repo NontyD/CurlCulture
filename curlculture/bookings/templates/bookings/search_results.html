@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Search Results{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
 <h2>Search Results for "{{ query }}"</h2>
 <ul>

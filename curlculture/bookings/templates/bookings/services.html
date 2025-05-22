@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}{{ category|title }} Services{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
 <h2>{{ category|title }} Services</h2>
 <ul>
