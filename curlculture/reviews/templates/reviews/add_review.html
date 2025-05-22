@@ -1,30 +1,32 @@
 {% extends 'base.html' %}
-
 {% block title %}Reviews{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
-<h2>Customer Reviews</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if form.errors %}
-        <div class="form-errors" style="color: #f72585;">
-            {{ form.errors }}
+<div class="reviews-container">
+    <h2>Add a Review</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+            <div class="form-errors">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn">Submit Review</button>
+    </form>
+    <hr>
+    {% for review in reviews %}
+        <div class="review">
+            <strong>{{ review.user.username }}</strong> 
+            <span style="color:#f72585;">&#9733; {{ review.rating }}/5</span>
+            <br>
+            <em>{{ review.service }}</em>
+            <p>{{ review.comment }}</p>
+            <small>Posted on {{ review.created_at|date:"M d, Y H:i" }}</small>
         </div>
-    {% endif %}
-    <button type="submit" class="btn">Submit Review</button>
-</form>
-<hr>
-{% for review in reviews %}
-    <div class="review" style="margin-bottom:2rem; padding:1rem; background:#f8f9fa; border-radius:8px;">
-        <strong>{{ review.user.username }}</strong> 
-        <span style="color:#f72585;">&#9733; {{ review.rating }}/5</span>
-        <br>
-        <em>{{ review.service }}</em>
-        <p>{{ review.comment }}</p>
-        <small>Posted on {{ review.created_at|date:"M d, Y H:i" }}</small>
-    </div>
-{% empty %}
-    <p>No reviews yet. Be the first to add one!</p>
-{% endfor %}
+    {% empty %}
+        <p>No reviews yet. Be the first to add one!</p>
+    {% endfor %}
+</div>
 {% endblock %}

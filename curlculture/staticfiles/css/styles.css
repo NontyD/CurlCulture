@@ -446,3 +446,66 @@ footer {
     margin: 0.3rem 0;
     font-weight: 500;
 }
+
+/* Review List & Add Review Styles */
+.reviews-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 2.5rem 2rem;
+}
+
+.review {
+    margin-bottom: 2rem;
+    padding: 1.2rem 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 5px solid #f72585;
+    transition: box-shadow 0.2s;
+}
+
+.review strong {
+    font-size: 1.1rem;
+    color: #22223b;
+}
+
+.review em {
+    color: #4a4e69;
+    font-size: 0.98rem;
+}
+
+.review p {
+    margin: 0.7rem 0 0.3rem 0;
+    font-size: 1.05rem;
+}
+
+.review small {
+    color: #888;
+    font-size: 0.92rem;
+}
+
+.btn {
+    background: #f72585;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #b5179e;
+}
+
+.form-errors {
+    color: #f72585;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}

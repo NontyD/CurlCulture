@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Profile{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
     {% if user.is_authenticated %}
         <h2>Your Profile</h2>

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Logout{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
 <h2>You have been logged out</h2>
 <p>Thank you for visiting CurlCulture. <a href="{% url 'login' %}">Login again</a> or <a href="{% url 'home' %}">return to the homepage</a>.</p>
