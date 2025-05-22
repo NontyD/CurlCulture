@@ -30,6 +30,7 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),
     path('shop/', include('shop.urls')),
     path('', include('home.urls')),
+    path('privacy-policy/', home_views.privacy_policy, name='privacy_policy'),
     ]
 
 # Serve static files during development
