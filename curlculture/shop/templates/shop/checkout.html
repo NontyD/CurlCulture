@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Checkout{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+{% endblock %}
 {% block content %}
+<div class="checkout-container">
 <h2>Checkout</h2>
 <form id="payment-form" method="post" style="max-width:500px;">
     {% csrf_token %}
@@ -19,7 +24,7 @@
 <p><strong>Subtotal:</strong> ${{ total|floatformat:2 }}</p>
 <p><strong>Shipping:</strong> {% if shipping == 0 %}Free{% else %}${{ shipping|floatformat:2 }}{% endif %}</p>
 <p><strong>Total:</strong> ${{ grand_total|floatformat:2 }}</p>
-
+</div>
 {% if stripe_public_key and client_secret %}
 <script src="https://js.stripe.com/v3/"></script>
 <script>
