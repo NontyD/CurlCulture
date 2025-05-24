@@ -2,6 +2,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
+<div class="auth-container">
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
@@ -9,4 +10,5 @@
     <button type="submit">Login</button>
   </form>
   <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+  </div>
 {% endblock %}
