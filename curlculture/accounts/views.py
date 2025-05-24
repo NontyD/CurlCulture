@@ -10,11 +10,18 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
+from bookings.models import Booking
+from shop.models import Order
 
 @login_required
 def profile(request):
-    return render(request, 'registration/profile.html')
-
+    user_bookings = Booking.objects.filter(user=request.user)
+    user_orders = Order.objects.filter(user=request.user)
+    return render(request, 'accounts/profile.html', {
+        'bookings': user_bookings,
+        'orders': user_orders,
+    })
+    
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -50,3 +57,4 @@ def activate(request, uidb64, token):
         return render(request, 'registration/activation_complete.html')
     else:
         return render(request, 'registration/activation_invalid.html')
+    

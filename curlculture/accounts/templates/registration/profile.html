@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
-
-{% block title %}Profile{% endblock %}
+{% block title %}My Profile{% endblock %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
-    {% if user.is_authenticated %}
-        <h2>Your Profile</h2>
-        <p>Welcome, {{ user.username }}!</p>
+<div class="profile-container">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <h3>Your Bookings</h3>
+    {% if bookings %}
+        <ul>
+        {% for booking in bookings %}
+            <li>{{ booking }} <a href="{% url 'booking_detail' booking.id %}">View</a></li>
+        {% endfor %}
+        </ul>
     {% else %}
-        <h2>Not logged in</h2>
-        <p>
-            Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to view your profile.
-        </p>
+        <p>No bookings yet.</p>
     {% endif %}
+
+    <h3>Your Orders</h3>
+    {% if orders %}
+        <ul>
+        {% for order in orders %}
+            <li>{{ order }} <a href="{% url 'order_detail' order.id %}">View</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No orders yet.</p>
+    {% endif %}
+</div>
 {% endblock %}
