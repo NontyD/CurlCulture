@@ -176,3 +176,14 @@ def checkout(request):
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': client_secret,
     })
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'shop/product_detail.html', {'product': product})
+
+def product_search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = Product.objects.filter(name__icontains=query)
+    return render(request, 'shop/product_search_results.html', {'results': results, 'query': query})
