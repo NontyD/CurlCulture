@@ -10,4 +10,6 @@ urlpatterns = [
     path('checkout/success/', views.checkout_success, name='checkout_success'),
     path('cart-added/', views.cart_added, name='cart_added'),
     path('stripe/webhook/', views.stripe_webhook, name='stripe_webhook'),
+    path('product-search/', views.product_search, name='product_search'),
+    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
 ]

@@ -7,6 +7,10 @@
 {% block content %}
 <!-- ...rest of your template... -->
 <h2>Shop Our Products</h2>
+<form method="get" action="{% url 'product_search' %}">
+    <input type="text" name="q" placeholder="Search products...">
+    <button type="submit">Search</button>
+</form>
 <form method="get" style="margin-bottom:1rem;">
     <select name="category">
         <option value="">All Categories</option>
