@@ -9,4 +9,5 @@ urlpatterns = [
     path('services/<str:category>/', views.services_view, name='services'),  # New URL for category services
     path('book/<int:service_id>/', views.book_service, name='book_service'),  # URL for booking a specific service
     path('search/', views.search, name='search'),
+    path('booking/<int:booking_id>/', views.booking_detail, name='booking_detail'),
 ]

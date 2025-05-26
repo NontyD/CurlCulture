@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BookingForm
 from django.contrib.auth.decorators import login_required
-from .models import ServiceCategory, SalonService
+from .models import ServiceCategory, SalonService, Booking
 
 
 def services_view(request, category):
@@ -42,3 +42,7 @@ def search(request):
     if query:
         results = SalonService.objects.filter(name__icontains=query)
     return render(request, 'bookings/search_results.html', {'results': results, 'query': query})
+
+def booking_detail(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    return render(request, 'bookings/booking_detail.html', {'booking': booking})

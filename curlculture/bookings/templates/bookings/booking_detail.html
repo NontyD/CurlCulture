@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Booking Detail{% endblock %}
+{% block content %}
+<div class="booking-detail-container">
+    <h2>Booking Details</h2>
+    <p><strong>Service:</strong> {{ booking.service.name }}</p>
+    <p><strong>Date:</strong> {{ booking.date }}</p>
+    <p><strong>Time:</strong> {{ booking.time }}</p>
+    <p><strong>Booked by:</strong> {{ booking.user.username }}</p>
+</div>
+{% endblock %}
