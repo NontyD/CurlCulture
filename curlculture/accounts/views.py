@@ -8,7 +8,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .forms import RegisterForm
+from .forms import RegisterForm, UserUpdateForm
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from bookings.models import Booking
 from shop.models import Order
@@ -58,3 +59,14 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'registration/activation_invalid.html')
     
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully!")
+            return redirect('profile')
+    else:
+        form = UserUpdateForm(instance=request.user)
+    return render(request, 'accounts/edit_profile.html', {'form': form})

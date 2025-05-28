@@ -14,3 +14,8 @@ class RegisterForm(forms.ModelForm):
         if cd.get('password') != cd.get('password2'):
             raise forms.ValidationError("Passwords don't match.")
         return cd.get('password2')
+    
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
