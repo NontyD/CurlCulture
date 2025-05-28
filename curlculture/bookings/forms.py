@@ -1,5 +1,5 @@
 from django import forms
-from .models import Booking, SalonService
+from .models import Booking, SalonService, ServiceCategory, ContactMessage
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -9,3 +9,8 @@ class BookingForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'}),
         }
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['name', 'email', 'subject', 'message']

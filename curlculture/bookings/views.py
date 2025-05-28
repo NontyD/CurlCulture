@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BookingForm
+from .forms import BookingForm, ContactForm
 from django.contrib.auth.decorators import login_required
-from .models import ServiceCategory, SalonService, Booking
-
+from .models import ServiceCategory, SalonService, Booking, ContactMessage
+from django.contrib import messages
 
 def services_view(request, category):
     # Fetch services for the selected category
@@ -46,3 +46,17 @@ def search(request):
 def booking_detail(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
     return render(request, 'bookings/booking_detail.html', {'booking': booking})
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message has been sent!")
+            return redirect('contact')
+        else:
+            print(form.errors)  # Add this line to debug
+    else:
+        form = ContactForm()
+    return render(request, 'bookings/contact.html', {'form': form})
