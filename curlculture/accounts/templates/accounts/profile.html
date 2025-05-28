@@ -5,6 +5,7 @@
 {% block content %}
 <div class="profile-container">
     <h2>Welcome, {{ user.username }}!</h2>
+    <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
     <h3>Your Bookings</h3>
     {% if bookings %}
         <ul>
