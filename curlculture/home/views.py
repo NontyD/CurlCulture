@@ -1,14 +1,19 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
-from .forms import ContactForm
+from .forms import SubscribeForm
+from bookings.forms import ContactForm
 
 def subscribe(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        # Here you can save the email to your database or mailing list
-        messages.success(request, "Thank you for subscribing!")
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "You have subscribed to the newsletter!")
+            return redirect('subscribe')
+    else:
+        form = SubscribeForm()
+    return render(request, 'home/subscribe.html', {'form': form})
 
 def home_view(request):
     return render(request, 'home/home.html')

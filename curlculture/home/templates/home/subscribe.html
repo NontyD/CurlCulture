@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Subscribe{% endblock %}
+{% block content %}
+<h2>Subscribe to our Newsletter</h2>
+{% if messages %}
+    {% for message in messages %}
+        <div style="color: green; margin-bottom: 1em;">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Subscribe</button>
+</form>
+{% endblock %}
