@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
+from django.contrib.auth import logout, get_user_model
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -70,3 +70,12 @@ def edit_profile(request):
     else:
         form = UserUpdateForm(instance=request.user)
     return render(request, 'accounts/edit_profile.html', {'form': form})
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        logout(request)
+        user.delete()
+        return redirect('home')
+    return render(request, 'accounts/delete_account.html')
