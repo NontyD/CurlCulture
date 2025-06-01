@@ -3,10 +3,13 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% block content %}
+<div class="booking-container">
+    
 <h2>Book Your Appointment</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Book Now</button>
 </form>
+</div>
 {% endblock %}
