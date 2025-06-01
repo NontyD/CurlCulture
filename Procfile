@@ -1,1 +1,1 @@
-web: gunicorn curlculture.config.wsgi
+web: gunicorn curlculture.config.wsgi --log-file -
