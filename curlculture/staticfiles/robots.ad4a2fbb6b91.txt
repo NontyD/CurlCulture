@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://curlculture-6f312b34fcce.herokuapp.com//sitemap.xml
