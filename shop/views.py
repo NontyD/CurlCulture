@@ -6,9 +6,9 @@ import stripe
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.contrib.auth.models import User
 import json
 
-# Product list with optional filtering and sorting
 def product_list(request):
     products = Product.objects.all()
     category = request.GET.get('category')
@@ -31,7 +31,6 @@ def product_list(request):
         'selected_sort': sort,
     })
 
-# Cart view
 def cart_view(request):
     cart = request.session.get('cart', {})
     products = Product.objects.filter(id__in=cart.keys())
@@ -42,7 +41,7 @@ def cart_view(request):
         subtotal = product.price * quantity
         cart_items.append({'product': product, 'quantity': quantity, 'subtotal': subtotal})
         total += subtotal
-    shipping = 0 if total > 30 else 5  # Free shipping over $30
+    shipping = 0 if total > 30 else 5
     grand_total = total + shipping
     return render(request, 'shop/cart.html', {
         'cart_items': cart_items,
@@ -51,7 +50,6 @@ def cart_view(request):
         'grand_total': grand_total,
     })
 
-# Add to cart
 def add_to_cart(request, product_id):
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
@@ -60,7 +58,6 @@ def add_to_cart(request, product_id):
     request.session['just_added'] = product_id
     return redirect('cart_view')
 
-# Remove from cart
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
     if str(product_id) in cart:
@@ -68,7 +65,6 @@ def remove_from_cart(request, product_id):
         request.session['cart'] = cart
     return redirect('cart_view')
 
-# Cart added feedback (not used if you redirect straight to cart)
 def cart_added(request):
     product_id = request.session.pop('just_added', None)
     product = None
@@ -76,42 +72,9 @@ def cart_added(request):
         product = get_object_or_404(Product, id=product_id)
     return render(request, 'shop/cart_added.html', {'product': product})
 
-
-# Checkout success page
 def checkout_success(request):
     request.session['cart'] = {}
     return render(request, 'shop/checkout_success.html')
-
-# Webhook for Stripe payment confirmation
-@csrf_exempt
-def stripe_webhook(request):
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
-
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
-        )
-    except ValueError:
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError:
-        return HttpResponse(status=400)
-
-    # Handle the event
-    if event['type'] == 'payment_intent.succeeded':
-        payment_intent = event['data']['object']
-        email = payment_intent['receipt_email']
-        # Send confirmation email
-        send_mail(
-            'Your CurlCulture Order Confirmation',
-            'Thank you for your order! Your payment was successful.',
-            settings.DEFAULT_FROM_EMAIL,
-            [email],
-            fail_silently=False,
-        )
-    return HttpResponse(status=200)
-
 
 
 def checkout(request):
@@ -132,38 +95,23 @@ def checkout(request):
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
     client_secret = None
+    show_payment = False
 
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            # Create Stripe PaymentIntent
+            metadata = {
+                'user_id': str(request.user.id),
+                'cart': json.dumps(cart)
+            }
             intent = stripe.PaymentIntent.create(
-                amount=int(grand_total * 100),  # Stripe expects cents
+                amount=int(grand_total * 100),
                 currency='usd',
                 receipt_email=form.cleaned_data['email'],
+                metadata=metadata
             )
             client_secret = intent.client_secret
-
-            # Here you should check if payment was successful (usually via webhook)
-            # For demo, let's assume payment is successful after form submission:
-            if intent.status == 'requires_payment_method' or intent.status == 'requires_confirmation':
-                # Don't create order yet, wait for payment confirmation
-                pass
-            else:
-                # Payment succeeded, create order
-                order = Order.objects.create(
-                    user=request.user,
-                    total=grand_total,
-                )
-                for item in cart_items:
-                    OrderItem.objects.create(
-                        order=order,
-                        product=item['product'],
-                        quantity=item['quantity'],
-                        price=item['product'].price,
-                    )
-                request.session['cart'] = {}
-                return redirect('checkout_success')
+            show_payment = True  # Show Stripe payment form
     else:
         form = CheckoutForm()
 
@@ -175,7 +123,68 @@ def checkout(request):
         'grand_total': grand_total,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': client_secret,
+        'show_payment': show_payment,
     })
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except (ValueError, stripe.error.SignatureVerificationError):
+        return HttpResponse(status=400)
+
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        email = payment_intent.get('receipt_email')
+        metadata = payment_intent.get('metadata', {})
+        user_id = metadata.get('user_id')
+        cart_json = metadata.get('cart')
+        try:
+            user = User.objects.get(id=user_id)
+            cart = json.loads(cart_json)
+            products = Product.objects.filter(id__in=cart.keys())
+            total = 0
+            cart_items = []
+            for product in products:
+                quantity = cart[str(product.id)]
+                subtotal = product.price * quantity
+                cart_items.append({'product': product, 'quantity': quantity, 'subtotal': subtotal})
+                total += subtotal
+            shipping = 0 if total > 30 else 5
+            grand_total = total + shipping
+
+            # Prevent duplicate orders for the same PaymentIntent
+            if not Order.objects.filter(user=user, total=grand_total, created_at__gte=timezone.now()-timezone.timedelta(minutes=10)).exists():
+                order = Order.objects.create(
+                    user=user,
+                    total=grand_total,
+                )
+                for item in cart_items:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=item['product'],
+                        quantity=item['quantity'],
+                        price=item['product'].price,
+                    )
+                # Send confirmation email
+                send_mail(
+                    'Your CurlCulture Order Confirmation',
+                    'Thank you for your order! Your payment was successful.',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
+        except Exception as e:
+            # Log error if needed
+            pass
+
+    return HttpResponse(status=200)
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
