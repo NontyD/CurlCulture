@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CurlCulture{% endblock %}</title>
+    <meta name="description" content="CurlCulture - Your destination for curly hair care, salon bookings, and premium hair products. Book appointments, shop online, and discover expert tips for natural hair.">
+    <meta name="keywords" content="Hair salon, Book hair appointment online, Buy hair products online, Natural hair care, Curly hair salon, Hair treatments, Salon near me, Hair styling products, Hair braiding services, Hair salon reviews, Best hair salon for curls, Salon booking platform, Hair care tips, Hair product shop">
     <link rel="apple-touch-icon" sizes="192x192" href="https://res.cloudinary.com/dzibrzlq9/image/upload/v1748212380/android-chrome-192x192_st1fhe.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dzibrzlq9/image/upload/v1748212387/favicon-32x32_ifwbyg.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dzibrzlq9/image/upload/v1748212386/favicon-16x16_iqwzmb.png">
@@ -13,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://js.stripe.com/v3/"></script> 
 </head>
-<body>
+<body>    
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -24,7 +26,7 @@
     <li><a href="{% url 'bookings_home' %}">Bookings</a></li>
     <li><a href="{% url 'review_list' %}">Reviews</a></li>
     <li><a href="{% url 'product_list' %}">Shop</a></li>
-    <a href="{% url 'profile' %}">Profile</a>
+    <li><a href="{% url 'profile' %}">Profile</a></li>
     <li style="position:relative;">
     <a href="{% url 'cart_view' %}" style="font-size:1.3em; position:relative;">
         &#128722; <!-- Unicode shopping cart symbol -->
