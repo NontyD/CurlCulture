@@ -57,6 +57,12 @@ header {
     margin: 0;
     padding: 0;
 }
+/* Style the separator between Login and Register for better contrast */
+.nav-links .auth-separator {
+    color: var(--nav-link);
+    font-weight: 500;
+    margin: 0 0.2em;
+}
 .nav-links a, .nav-links .btn {
     color: var(--nav-link);
     text-decoration: none;

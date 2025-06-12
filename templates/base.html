@@ -46,7 +46,11 @@
     {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}">Logout</a></li>
     {% else %}
-        <li><a href="{% url 'login' %}">Login</a> / <a href="{% url 'register' %}">Register</a></li>
+        <li>
+  <a href="{% url 'login' %}">Login</a>
+  <span class="auth-separator">/</span>
+  <a href="{% url 'register' %}">Register</a>
+</li>
     {% endif %}
     {% if user.is_staff or user.is_superuser %}
         <li><a href="/admin/">Admin</a></li>
