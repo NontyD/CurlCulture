@@ -128,7 +128,9 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - Users can register, log in, log out, and manage their profile.
 - Secure password reset and email verification for new accounts.
 
-![register](static/images/Screenshot_13.jpg)
+![register](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749776270/register_jpix29.png)
+
+![login](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749776260/login_tioyia.png)
 
 ### Product Catalog
 
@@ -136,7 +138,7 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - Products can be filtered by category and sorted by price or name.
 - Detailed product pages with add-to-cart functionality.
 
-![shop](static/images/home.jpg)
+![shop](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749776438/shop_fmn0fg.png)
 
 ### Shopping Cart
 
@@ -144,7 +146,7 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - View cart summary with itemized subtotals and total cost.
 - Cart persists across sessions for logged-in users.
 
-![cart](static/images/register.jpg)
+![cart](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749776014/cart_qok9qw.png)
 
 ### Secure Checkout
 
@@ -152,57 +154,57 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - Order summary and shipping calculation before payment.
 - Confirmation page after successful checkout.
 
-![checkout](static/images/login.jpg)
+![checkout](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767946/checkout1_gufbqi.png)
 
 ### Salon Bookings
 
 - Book salon services directly from the website.
 - View and manage upcoming bookings in the user profile.
 
-![bookings](static/images/products.jpg)
+![bookings](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767957/services_efgorc.png)
 
 ### Reviews
 
 - Users can view and submit reviews for salon services.
 - Reviews are displayed on relevant service pages.
 
-![reviews](static/images/price.jpg)
+![reviews](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749775700/reviews_i11d1g.png)
 
 ### Newsletter Subscription
 
 - Users can subscribe to a newsletter to receive updates and special offers.
 
-![newsletter](static/images/category.jpg)
+![newsletter](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749776521/newsletter_oybaxn.png)
 
 ### Contact Form
 
 - Users can send messages to the salon via a contact form.
 - Admins can view and respond to messages in the admin panel.
 
-![contact](static/images/product_detail.jpg)
+![contact](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767947/contact_khyweq.png)
 
 ### Admin Features
 
 - Admins can manage users, products, orders, bookings, reviews, blog posts, and contact messages through the Django admin interface.
 
-![admin](static/images/thebag.jpg)
+![admin](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749774672/admin_rauftp.png)
 
 ## Privacy policy
 
-![policy](static/images/privacy_policy.jpg)
+![policy](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767954/privacy_q1yp5q.png)
 
 ## Facebook
 
 In terms of marketing, the site has a facebook page to push content.and target some of its customers through content creation
 
-![facebook](static/images/facebook.jpg)
+![facebook](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749601767/facebook_cc_q0ay07.png)
 
 # Profile
 
 - The user profile page gives user an option to edit or delete the account
 - There is also a view booking history option
 
-![profile](static/images/profile.jpg)
+![profile](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767957/profile_hphcgo.png)
 
 # 404 page
 

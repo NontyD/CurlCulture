@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
+print("DEBUG is", DEBUG)
 ALLOWED_HOSTS = ['curlculture-6f312b34fcce.herokuapp.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
