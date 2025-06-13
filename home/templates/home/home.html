@@ -58,22 +58,23 @@
 </section>
 
 <!-- Shop Section -->
-<section class="shop-hero">
-    <img src="https://res.cloudinary.com/dzibrzlq9/image/upload/f_auto,q_auto,w_800/v1747521173/products_udokr6.webp"
-         alt="Shop Products" class="shop-hero-img">
-    <div class="shop-hero-content">
-        <h2>Our Products</h2>
-        <p>
-            Discover our curated selection of hair care products and accessories, handpicked for every curl type and style. 
-            Shop with ease—just add your favorites to the cart and check out in a few simple steps.
-        </p>
-        <p class="shop-hero-offer">
-            Enjoy <strong>FREE shipping</strong> on all orders over $30!
-        </p>
-        <a class="btn" href="{% url 'product_list' %}">
-            SHOP NOW
-        </a>
-    </div>
-</section>
-
+<div class="shop">
+    <section class="shop-hero">
+        <img src="https://res.cloudinary.com/dzibrzlq9/image/upload/f_auto,q_auto,w_800/v1747521173/products_udokr6.webp"
+             alt="Shop Products" class="shop-hero-img">
+        <div class="shop-hero-content">
+            <h2>Our Products</h2>
+            <p>
+                Discover our curated selection of hair care products and accessories, handpicked for every curl type and style. 
+                Shop with ease—just add your favorites to the cart and check out in a few simple steps.
+            </p>
+            <p class="shop-hero-offer">
+                Enjoy <strong>FREE shipping</strong> on all orders over $30!
+            </p>
+            <a class="btn" href="{% url 'product_list' %}">
+                SHOP NOW
+            </a>
+        </div>
+    </section>    
+</div>
 {% endblock %}
