@@ -210,7 +210,7 @@ In terms of marketing, the site has a facebook page to push content.and target s
 
 A 404 page is also available to handle navigation errors with a home link button to take them back to the home page
 
-![error handling](static/images/404.jpg)
+![error handling](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749778556/error404_lqagyl.png)
 
 ### Future features
 
