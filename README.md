@@ -121,12 +121,14 @@ Though there are a lot of marketing techniques for businesses, Pack and Stash de
 
 The site is fully responsive and works seamlessly on desktop, tablet, and mobile devices.
 
+![](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749772821/responsive_uadmuc.png)
+
 ### User Authentication
 
 - Users can register, log in, log out, and manage their profile.
 - Secure password reset and email verification for new accounts.
 
-![header](static/images/Screenshot_13.jpg)
+![register](static/images/Screenshot_13.jpg)
 
 ### Product Catalog
 
@@ -134,7 +136,7 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - Products can be filtered by category and sorted by price or name.
 - Detailed product pages with add-to-cart functionality.
 
-![home](static/images/home.jpg)
+![shop](static/images/home.jpg)
 
 ### Shopping Cart
 
@@ -142,7 +144,7 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - View cart summary with itemized subtotals and total cost.
 - Cart persists across sessions for logged-in users.
 
-![register](static/images/register.jpg)
+![cart](static/images/register.jpg)
 
 ### Secure Checkout
 
@@ -150,54 +152,44 @@ The site is fully responsive and works seamlessly on desktop, tablet, and mobile
 - Order summary and shipping calculation before payment.
 - Confirmation page after successful checkout.
 
-![login](static/images/login.jpg)
-
-### Order Management
-
-- Orders are created only after successful payment.
-- Users receive an order confirmation email after payment.
-- Admins can view and manage all orders in the admin panel.
-
-![logout](static/images/logout.jpg)
+![checkout](static/images/login.jpg)
 
 ### Salon Bookings
 
 - Book salon services directly from the website.
 - View and manage upcoming bookings in the user profile.
 
-![products](static/images/products.jpg)
+![bookings](static/images/products.jpg)
 
 ### Reviews
 
 - Users can view and submit reviews for salon services.
 - Reviews are displayed on relevant service pages.
 
-![logout](static/images/price.jpg)
+![reviews](static/images/price.jpg)
 
 ### Newsletter Subscription
 
 - Users can subscribe to a newsletter to receive updates and special offers.
 
-![category](static/images/category.jpg)
+![newsletter](static/images/category.jpg)
 
 ### Contact Form
 
 - Users can send messages to the salon via a contact form.
 - Admins can view and respond to messages in the admin panel.
 
-![detail](static/images/product_detail.jpg)
-
-![add to bag](static/images/add_bag.jpg)
+![contact](static/images/product_detail.jpg)
 
 ### Admin Features
 
 - Admins can manage users, products, orders, bookings, reviews, blog posts, and contact messages through the Django admin interface.
 
-![bag](static/images/thebag.jpg)
+![admin](static/images/thebag.jpg)
 
 ## Privacy policy
 
-![privacy policy](static/images/privacy_policy.jpg)
+![policy](static/images/privacy_policy.jpg)
 
 ## Facebook
 

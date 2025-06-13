@@ -49,19 +49,23 @@
 
 - **HTML Validation**: Used the [W3C HTML Validator](https://validator.w3.org/) which returned the following results:
 
-![HTML Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741776880/html_whfkh0.png)
+![HTML Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767953/html_gjlo12.png)
 
 ## CSS Validation Tests
 
 - **CSS Validation**: Used the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) which returned the following results:
 
-![CSS Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741776868/css_qumr2s.png)
+![CSS Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767946/css_i4wcn6.png)
 
-## Javascript Validation Tests
-
-- **JavaScript Validation**: Used [JSHint](https://jshint.com/) to validate JavaScript code
-
-![calendar.js](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741719302/jshint_cragmi.png)
+**One error** is reported from the Font Awesome CDN stylesheet:
+.fa-rotate-by { transform: rotate(var(--fa-rotate-angle, none)); }
+var(--fa-rotate-angle, none) is not a transform value : rotate(var(--fa-rotate-angle, none))
+This is a known issue with Font Awesome and does not affect the appearance or functionality of the site.
+**Warnings about CSS variables:**
+"Due to their dynamic nature, CSS variables are currently not statically checked". These warnings are informational and do not indicate errors in the CSS. The site uses CSS variables for flexibility and maintainability.
+Conclusion:
+All validation errors and warnings are either from trusted third-party libraries or are expected due to the use of CSS variables.
+They do not impact the user experience or site functionality.
 
 ## Python Validation Tests
 
@@ -77,11 +81,7 @@
 
 ### Scores for Home Page
 
-![Home](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741779211/lighthouse_home_wqsuy4.png)
-
-### Scores for Dashboard
-
-![Dashboard](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741779210/lighthouse_dashboard_osmhbz.png)
+![Home](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749767953/lighthouse_ui3mfc.png)
 
 ## Browser Compatibility
 
@@ -91,18 +91,10 @@ The website was manually tested in chrome, firefox and edge and it worked accros
 
 - **Accessibility**: Used [WAVE](https://wave.webaim.org/). I could only manage to test the pages that are accessible without login, for the other pages, I used the report I got from home page to clean them up.
 
-![Accessibility](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741775364/wave_home_lejwi3.png)
-
-![Accessibility](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741775365/wave_login_xygasm.png)
-
-![Accessibility](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741775365/wave_signup_glpfbf.png)
+![Accessibility](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749769001/wave_hfgy5g.png)
 
 ## Responsiveness
 
 - **Responsiveness**: Used [Am I responsive](https://ui.dev/amiresponsive). I had to download Ignore X-frames extesion to be able to use the test. However, I could only manage to test the home page and login page as there was a security warning when I logged in.
 
-![Responsiveness](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741716797/responsive_home_qv2vst.png)
-
-![Responsiveness](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741716797/responsive_login_fdmh3o.png)
-
-![Responsiveness](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741716797/responsive_error_iur23j.png)
+![Responsiveness](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749772821/responsive_uadmuc.png)
