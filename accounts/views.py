@@ -14,37 +14,58 @@ from django.contrib.auth.decorators import login_required
 from bookings.models import Booking
 from shop.models import Order
 
+
 @login_required
 def profile(request):
+    """
+    Display the user's profile, including their bookings and orders.
+    """
     user_bookings = Booking.objects.filter(user=request.user)
     user_orders = Order.objects.filter(user=request.user)
-    return render(request, 'accounts/profile.html', {
-        'bookings': user_bookings,
-        'orders': user_orders,
-    })
-    
+    return render(
+        request,
+        'accounts/profile.html',
+        {'bookings': user_bookings, 'orders': user_orders}
+    )
+
+
 def register(request):
+    """
+    Handle user registration and send activation email.
+    """
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False  # Deactivate account until it is confirmed
+            user.is_active = False  # Deactivate account until confirmed
             user.save()
             current_site = get_current_site(request)
             subject = 'Activate Your CurlCulture Account'
-            message = render_to_string('registration/account_activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': default_token_generator.make_token(user),
-            })
-            send_mail(subject, message, 'noreply@curlculture.com', [user.email])
+            message = render_to_string(
+                'registration/account_activation_email.html',
+                {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': default_token_generator.make_token(user),
+                }
+            )
+            send_mail(
+                subject,
+                message,
+                'noreply@curlculture.com',
+                [user.email]
+            )
             return render(request, 'registration/activation_sent.html')
     else:
         form = RegisterForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
 def activate(request, uidb64, token):
+    """
+    Activate user account if the activation link is valid.
+    """
     User = get_user_model()
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -58,9 +79,13 @@ def activate(request, uidb64, token):
         return render(request, 'registration/activation_complete.html')
     else:
         return render(request, 'registration/activation_invalid.html')
-    
+
+
 @login_required
 def edit_profile(request):
+    """
+    Allow users to edit their profile information.
+    """
     if request.method == 'POST':
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -71,8 +96,12 @@ def edit_profile(request):
         form = UserUpdateForm(instance=request.user)
     return render(request, 'accounts/edit_profile.html', {'form': form})
 
+
 @login_required
 def delete_account(request):
+    """
+    Allow users to delete their account.
+    """
     if request.method == 'POST':
         user = request.user
         logout(request)

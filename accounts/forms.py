@@ -1,9 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User
 
+
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password',
+                                widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -15,6 +17,7 @@ class RegisterForm(forms.ModelForm):
             raise forms.ValidationError("Passwords don't match.")
         return cd.get('password2')
     
+
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
