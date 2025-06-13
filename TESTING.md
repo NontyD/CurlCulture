@@ -69,11 +69,14 @@ They do not impact the user experience or site functionality.
 
 ## Python Validation Tests
 
-- **Python Validation**: Used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate Python code. My website comprises of 7 apps with an average of 4 python files each. I have tested all of them but attaching all the screenshots will overcrowd this document. I have cleaned them up according to the pep8 report. There are few others that shortning the character length would beat pep8 purpose of readability as they were only one character over the limit and sometimes it would just be a closing bracket.
+- **Python Validation**: All Python files were validated using [CI Python Linter](https://pep8ci.herokuapp.com/) for PEP8 compliance. The project consists of 6 Django apps, each with multiple Python files.
+  - **Most files passed** the linter with no issues after cleanup.
+  - In a few cases, some lines slightly exceeded the 79-character limit (usually by 1–2 characters, often for closing brackets or improved readability). These were left as-is to maintain code clarity and avoid unnecessary line breaks.
+  - No critical PEP8 errors remain, and all warnings have been reviewed and addressed where possible.
 
-![Passed Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741778048/errror_none_d2vo8p.png)
+![Passed Validation](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749787549/pass_py1yes.png)
 
-![Validation Fail](https://res.cloudinary.com/dzibrzlq9/image/upload/v1741778048/error_yes_d8uakr.png)
+![Validation Fail](https://res.cloudinary.com/dzibrzlq9/image/upload/v1749787561/fail_hqs9ui.png)
 
 ## Lighthouse Scores
 
